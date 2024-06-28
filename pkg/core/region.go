@@ -747,7 +747,7 @@ func GenerateRegionGuideFunc(enableLog bool) RegionGuideFunc {
 		regionID := region.GetID()
 		if logRunner != nil {
 			debug = func(msg string, fields ...zap.Field) {
-				_ = logRunner.RunTask(
+				logRunner.RunTask(
 					regionID,
 					"DebugLog",
 					func() {
@@ -756,7 +756,7 @@ func GenerateRegionGuideFunc(enableLog bool) RegionGuideFunc {
 				)
 			}
 			info = func(msg string, fields ...zap.Field) {
-				_ = logRunner.RunTask(
+				logRunner.RunTask(
 					regionID,
 					"InfoLog",
 					func() {
