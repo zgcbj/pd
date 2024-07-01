@@ -91,10 +91,10 @@ func SetRangePort(start, end int) {
 var once sync.Once
 
 // InitLogger initializes the logger for test.
-func InitLogger(logConfig log.Config, logger *zap.Logger, logProps *log.ZapProperties, isRedactInfoLogEnabled bool) (err error) {
+func InitLogger(logConfig log.Config, logger *zap.Logger, logProps *log.ZapProperties, redactInfoLog logutil.RedactInfoLogType) (err error) {
 	once.Do(func() {
 		// Setup the logger.
-		err = logutil.SetupLogger(logConfig, &logger, &logProps, isRedactInfoLogEnabled)
+		err = logutil.SetupLogger(logConfig, &logger, &logProps, redactInfoLog)
 		if err != nil {
 			return
 		}
