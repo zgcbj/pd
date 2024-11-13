@@ -61,5 +61,6 @@ else
         [[ $(($min_i + 1)) -eq $2 ]] && res+=($t)
     done
 
+    echo CGO_ENABLED=1 go test -timeout=15m -tags deadlock -race -covermode=atomic -coverprofile=covprofile -coverpkg=./... ${res[@]}
     CGO_ENABLED=1 go test -timeout=15m -tags deadlock -race -covermode=atomic -coverprofile=covprofile -coverpkg=./... ${res[@]}
 fi
